@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="oZ7NTuvNBtPcsRCi29WlK6"><head data-page-node-id="ZWZgKjscU7TGLvpMtn2ti0">
+  <meta charset="UTF-8" data-page-node-id="WD2uHtayrsaBxXsMLSJshH">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" data-page-node-id="mAJESBHjHIb7qAW0O44nUI">
+  <meta name="theme-color" content="#0f766e" data-page-node-id="s9LXJbCWthYXfx5w2IG9xS">
+  <title>现场经理工作平台 · 设备状态管理</title>
+  <meta name="description" content="面向现场经理的多项目设备状态管理平台：云端共享设备故障记录、统计故障类型与频次、多人实时同步。纯网页操作，手机浏览器即可使用。" data-page-node-id="ROcJSDGEVH4dyRYrcdeRR8">
+  <link rel="stylesheet" href="style.css" data-page-node-id="tRZWLWvMHY9xs8fbMpLIqP">
+<style id="__dm_no_drag_style__">* { -webkit-user-drag: none !important; }</style><style id="__dm_bindable_badge_style__">[data-sp-bindable="database"]{outline:1px dashed #0088ff;outline-offset:2px;border-radius:4px;}[data-sp-bindable="database"] *{pointer-events:none !important;transition:none !important;animation:none !important;}[data-sp-bindable="database"]{transition:none !important;animation:none !important;}</style></head>
+<body data-page-node-id="xeLQLbav4hInDO0c0D1oHz" style="">
+  <!-- 顶部应用栏 -->
+  <header class="appbar" data-page-node-id="p64LyMWdeUGHpVe0npAhzY">
+    <div class="appbar-inner" data-page-node-id="vep5DuHyOgx4kWA55U0iAH">
+      <div class="brand" data-page-node-id="FkQCNBCygexWwK0FD0yaLb">
+        <span class="brand-logo" aria-hidden="true" data-page-node-id="lUvztupAE9owRnoRE16lDB">🏗️</span>
+        <div class="brand-text" data-page-node-id="XEnLcFgTYhlSwtgVXbMAyM">
+          <h1 data-page-node-id="DJFs1jet5g6EBM54VMoA5R">现场经理工作平台</h1>
+          <p data-page-node-id="FSbSZrn9CP388xcRbyrji2">多项目 · 云端共享 · 设备状态</p>
+        </div>
+      </div>
+      <button id="btnDataMenu" class="icon-btn" type="button" aria-label="数据备份" title="数据备份" data-page-node-id="WSqYr8240kwYTdPLzr27mc">⚙️</button>
+    </div>
+  </header>
+
+  <!-- 项目选择条 -->
+  <section class="project-bar" aria-label="项目管理" data-page-node-id="NWYBgMGkwTUJ1sztSmWSbd">
+    <div class="project-bar-inner" data-page-node-id="83OjHrScGlydAO3QVHhpWg">
+      <label for="projectSelect" class="sr-only" data-page-node-id="CCL5mbA4UcYwuTYoFTUooq">选择项目</label>
+      <select id="projectSelect" class="project-select" data-page-node-id="cRBNt2FcE0qBqeIrN5lMWh"></select>
+      <button id="btnManageProjects" class="btn btn-ghost" type="button" data-page-node-id="jFXrYN19pBrAqBHNC5ewzF">管理</button>
+    </div>
+  </section>
+
+  <!-- 主内容区 -->
+  <main class="container" data-page-node-id="zRW1RtJuVN8yEv8EbyhSyt">
+    <!-- 录入视图 -->
+    <section id="view-input" class="view" hidden="" data-page-node-id="jJr9B0n5CIdJKhKj4Evv4k">
+      <div class="card" data-page-node-id="lTFK5f9RmUjAuS1LsJDkIz">
+        <div class="card-head" data-page-node-id="HfkSTyAwpK9W8m9lN3ZC9K">
+          <h2 data-page-node-id="7GK4gpSOYfM9oHUB67GAkS">录入设备故障</h2>
+          <p class="muted" data-page-node-id="nhEMCjBVPVV3Bbi4haKmqd">填写当前选中项目下的设备问题，打开页面的人实时可见、可直接协作。</p>
+        </div>
+        <form id="faultForm" class="form" autocomplete="off" data-page-node-id="MQlQRZzJ8qILW4j6dsMMeP">
+          <div class="field" data-page-node-id="GxQ3NA5SHK0KZvCBKMvK2h">
+            <label for="f-device" data-page-node-id="jVX8VDr6DbvIPDQZJ17xu4">设备名称 <span class="req" data-page-node-id="nSvuVkrkAjaoBp6laWW5qG">*</span></label>
+            <input id="f-device" name="device" type="text" placeholder="如：1#塔吊、混凝土泵车" required="" data-page-node-id="3VxIsAdBYPTZVpb7m9X9Sr">
+          </div>
+          <div class="field" data-page-node-id="SaAHgF0Ae9EH9kUrX0kGQc">
+            <label for="f-code" data-page-node-id="qOQxoSnu0GohNup9mWv3Il">设备编号 / 位置</label>
+            <input id="f-code" name="code" type="text" placeholder="如：TD-001 / B区3层" data-page-node-id="FODvAvEO83ne4G5svLyBRx">
+          </div>
+          <div class="field" data-page-node-id="FI3AgoPy1hJhxWJL0aEHJb">
+            <label for="f-type" data-page-node-id="evun8HyFYfV6MZrVYkguFM">故障类型 <span class="req" data-page-node-id="SBb0wbj7h9NNoLyBqd1E5y">*</span></label>
+            <select id="f-type" name="type" required="" data-page-node-id="AP4oIveMzwrmP0BGThxDEu"><option value="">请选择</option><option>机械故障</option><option>电气故障</option><option>液压/气动故障</option><option>控制系统故障</option><option>结构/磨损</option><option>安全装置</option><option>仪表/传感器</option><option>其他</option></select>
+          </div>
+          <div class="field-row" data-page-node-id="ELCwIODQ8y0sVPNHzSopNa">
+            <div class="field" data-page-node-id="E7Fs3ABIBjqwAHnoZyldJK">
+              <label for="f-severity" data-page-node-id="De3j9i1xvk2L9xZkxZdf3w">严重程度</label>
+              <select id="f-severity" name="severity" data-page-node-id="xo3DOtA91h4FuPHnN2Ehai">
+                <option value="紧急" data-page-node-id="ADuMAtHKibSFxn5JHr7vot">紧急</option><option value="重要" selected="" data-page-node-id="oHbvvdf19TNKguuaSRiB6S">重要</option><option value="一般" data-page-node-id="fIxBIEOvFEyGoyqHF0mGbo">一般</option>
+              </select>
+            </div>
+            <div class="field" data-page-node-id="cjj97nO8qVHWhhJUvPAlYt">
+              <label for="f-status" data-page-node-id="5wejsdKvoNPwwfaeBHrjmt">处理状态</label>
+              <select id="f-status" name="status" data-page-node-id="tXYHd9ZzKxetoM7V9Tv6aG">
+                <option value="待处理" selected="" data-page-node-id="wOeOQAEt1CFF4SGcrLF1yE">待处理</option><option value="处理中" data-page-node-id="xcshSgG7M7CaiHa981BU2v">处理中</option><option value="已解决" data-page-node-id="OuxfnlTsJoZsKB19ADMCAj">已解决</option>
+              </select>
+            </div>
+          </div>
+          <div class="field" data-page-node-id="bTnH6rXZJBYXfMq0cXUnqU">
+            <label for="f-desc" data-page-node-id="3WuWwGHkvMJoHPYJ2QUk9Y">故障描述 <span class="req" data-page-node-id="RyX9uu0dRlfoudIwo1eevi">*</span></label>
+            <textarea id="f-desc" name="desc" rows="3" placeholder="故障现象、影响范围、初步判断…" required=""></textarea>
+          </div>
+          <div class="field-row" data-page-node-id="DRJK2lNDSSlmAv4lO3nM1n">
+            <div class="field" data-page-node-id="dJoAFbhriIAwMquhqcpd2O">
+              <label for="f-reporter" data-page-node-id="OtF4Di4XUcBnFuMY68UQgO">上报人</label>
+              <input id="f-reporter" name="reporter" type="text" placeholder="姓名" data-page-node-id="mH7tBjVJUyyRZHMNos2GnY">
+            </div>
+            <div class="field" data-page-node-id="gfojxoe8TBgtgw2tMo6Eqk">
+              <label for="f-date" data-page-node-id="R4qGl8nJzJfgjcJcBIh2GM">发现日期</label>
+              <input id="f-date" name="date" type="date" data-page-node-id="4nV1RlIXPsXmxrj4vy8wHp">
+            </div>
+          </div>
+          <div class="form-actions" data-page-node-id="iGuqSlbnQ2bEbE6bIaGGHE">
+            <button type="reset" class="btn btn-ghost" data-page-node-id="NTCRGls6JYyGplVclKKJ28">清空</button>
+            <button type="submit" class="btn btn-primary" data-page-node-id="5Frnn9TkU46Mq8bymonVGk">保存记录</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 清单视图 -->
+    <section id="view-list" class="view" hidden="" data-page-node-id="LECZGjiEGxXo0Tnax1m7za">
+      <div class="card" data-page-node-id="NlGiYS9jJvUYI47cJiMhr6">
+        <div class="card-head" data-page-node-id="7OPjI62MrAaSqEaFV777ab">
+          <h2 data-page-node-id="TKb2vdM0tkwNAg6CkYuPb1">故障清单</h2>
+          <p class="muted" data-page-node-id="OyNhNWcN24bzApJWjC1UBV">按项目查看、筛选与编辑设备故障记录。</p>
+        </div>
+        <div class="list-toolbar" data-page-node-id="kYJiaJsSIQeX3id1ysnHtk">
+          <input id="searchInput" class="search" type="search" placeholder="搜索设备/编号/描述…" data-page-node-id="tug7Pe17n16uubH4brMIgP">
+          <select id="filterType" class="filter-select" data-page-node-id="DEnl81bYKDawap9v12kmkG"><option value="">全部类型</option><option>机械故障</option><option>电气故障</option><option>液压/气动故障</option><option>控制系统故障</option><option>结构/磨损</option><option>安全装置</option><option>仪表/传感器</option><option>其他</option></select>
+          <select id="filterStatus" class="filter-select" data-page-node-id="ArUBN2qiHFBmBdtDKcQupe">
+            <option value="" data-page-node-id="B2PeEqPnmQhiDYdPBpiG6o">全部状态</option>
+            <option value="待处理" data-page-node-id="mXqW6o227BaPlxiC1DY13m">待处理</option><option value="处理中" data-page-node-id="wB6ov7JSs0Rhzpl78DtEZY">处理中</option><option value="已解决" data-page-node-id="nGIHCOBr7X5XMuYBbGGhwF">已解决</option>
+          </select>
+        </div>
+        <div class="table-wrap" data-page-node-id="tTI99n9GvxusvJxv5Mf0IX">
+          <table class="data-table" data-page-node-id="hHC6xCirFLxoCjzUZofvv2">
+            <thead data-page-node-id="ASGJ3jJ2tFKNQl2SF1pEoE">
+              <tr data-page-node-id="oisvBnu4hdbuDuF4245xEK"><th data-page-node-id="tVbNYau7SPptmLAXfpGtgO">设备</th><th data-page-node-id="IZmMeQnJIE0u8KALUlZoVA">类型</th><th data-page-node-id="UNDAoFOqqsqmWuUMIGhkDP">严重度</th><th data-page-node-id="PYIL3lZTH0dyrkdW4DcyD8">状态</th><th data-page-node-id="2LPTX1CiOZFYE8exItvVst">日期</th><th class="col-act" data-page-node-id="B2sNBrBQA6EgtbEIhWqGGD">操作</th></tr>
+            </thead>
+            <tbody id="recordTableBody" data-page-node-id="hRLKCHXVC4P6Z5K5QnnhXy"></tbody>
+          </table>
+          <p id="listEmpty" class="empty" hidden="" data-page-node-id="OqyNCVsw6TouehcvBG0dNo">暂无记录，去「录入」添加第一条故障吧。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 统计视图 -->
+    <section id="view-stats" class="view" hidden="" data-page-node-id="iMRaeqDpGBPXOK5aq5LEDq">
+      <div class="stats-summary" id="statsSummary" data-page-node-id="pxF26nBVMUbQeBUBnSDd4L"></div>
+      <div class="card" data-page-node-id="stpVs1nyh8pCHCqscZFLwi">
+        <div class="card-head" data-page-node-id="99peRhlShKPNwjwdvXPkZM"><h2 data-page-node-id="W1Fp5CW6JXstdoXHXxj8rX">故障类型分布</h2></div>
+        <div class="chart-box" data-page-node-id="Mcra5HBt371g39Aj0h8dB3"><canvas id="chartType" data-page-node-id="lsEoM2ZRLUseJLlfWPCWYH"></canvas></div>
+      </div>
+      <div class="card" data-page-node-id="KbkWwzgQz47gD0ZOy02Qjk">
+        <div class="card-head" data-page-node-id="4SWTqam865c4aVT1YobfCr"><h2 data-page-node-id="WwcZ7kqZ7tGZ8hUfRB8udo">各项目故障数量</h2></div>
+        <div class="chart-box" data-page-node-id="LDQjUb4BHJgmW8T4LpsCbe"><canvas id="chartProject" data-page-node-id="AOtt5JwvG8bkd1yCdah4Wv"></canvas></div>
+      </div>
+      <div class="card-grid" data-page-node-id="WfLzL5BIl4NylfF0rbuQpV">
+        <div class="card" data-page-node-id="EOpf3H6s49Y9CGcVfigN4F"><div class="card-head" data-page-node-id="m7FdL88zWn6EGiDGD9A1Et"><h2 data-page-node-id="CDFHdr5go2vciwP5lwMWDT">处理状态</h2></div><div class="chart-box" data-page-node-id="6GXXf9w4abRuefcIieq3p0"><canvas id="chartStatus" data-page-node-id="FseJctcRrHMJO2oiDc4e8q"></canvas></div></div>
+        <div class="card" data-page-node-id="OEasAyKrxKjqHzwtbY1nnZ"><div class="card-head" data-page-node-id="MgEGU259rVMAiTcwx97pv2"><h2 data-page-node-id="j67EfPmSHeC8WBkAVLwYSr">严重程度</h2></div><div class="chart-box" data-page-node-id="5JsWJxLuxGmEmXSBWRAxQi"><canvas id="chartSeverity" data-page-node-id="WGL0tHVboyYpxcl5HiyPkJ"></canvas></div></div>
+      </div>
+      <div class="card" data-page-node-id="2cTMKMwzZAdlJbvpPuqAmb">
+        <div class="card-head" data-page-node-id="BZUE6Rlrf2TbnGlXwhgNJT"><h2 data-page-node-id="bHJiPvb7k7rBn6d1EBKAIf">高频故障设备 TOP 10</h2></div>
+        <div class="chart-box" data-page-node-id="kvAEhAzbBaFXANDmKMbGE7"><canvas id="chartTop" data-page-node-id="P2WCrLhqWyThImzRI4CT6S"></canvas></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 底部导航 -->
+  <nav class="tabbar" aria-label="主导航" data-page-node-id="Sl097AbosHgN8XhghhJocc">
+    <button class="tab" data-view="input" type="button" data-page-node-id="WJ3HAJPdRwKszuhWKOfwsU"><span class="tab-ico" data-page-node-id="EkelQBf8XBQpYKbYnvNpUS">➕</span><span data-page-node-id="qyFYHi5BCRNFeFAlHTUpt6">录入</span></button>
+    <button class="tab" data-view="list" type="button" data-page-node-id="vmDb7qOCbHLMPzY430ZhAa"><span class="tab-ico" data-page-node-id="EJMGkNkuGneqMJh8QA8XAf">📋</span><span data-page-node-id="yDM4MvKfq8df9wp9oNWdG3">清单</span></button>
+    <button class="tab" data-view="stats" type="button" data-page-node-id="znGLsIWh8ZvQq7sz0ez1HV"><span class="tab-ico" data-page-node-id="62oP1iI2Fkn4v1nwiYAOAm">📊</span><span data-page-node-id="pXbQcVDy4TwFOeDgTVWldN">统计</span></button>
+  </nav>
+
+  <!-- 项目管理弹窗 -->
+  <div id="projectModal" class="modal" hidden="" data-page-node-id="7m2Bqvu2IusPafnCfcGql9">
+    <div class="modal-backdrop" data-close="projectModal" data-page-node-id="YJhypqNQoKcxPVL3BtGI9O"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="项目管理" data-page-node-id="rDu42IBsRM1tKuxigC4EM3">
+      <div class="modal-head" data-page-node-id="avpLWiJq6mDWqE5mxx5AZv">
+        <h3 data-page-node-id="AIZ9eIiPx1e95coVyLsvJ1">项目管理</h3>
+        <button class="icon-btn" data-close="projectModal" type="button" aria-label="关闭" data-page-node-id="PbAqTvzhbzd6CMFiMIb3Y3">✕</button>
+      </div>
+      <form id="projectForm" class="form" data-page-node-id="ySvRVrv26y3hU8YnCg9I5E">
+        <div class="field-row" data-page-node-id="pHYlhzdiNRoUkDy3FqtoDD">
+          <div class="field" data-page-node-id="WFdv4QrLwRprzq2Og92Rhy"><label for="p-name" data-page-node-id="pjfmCSrQjkh5mpRosSEIfg">项目名称 <span class="req" data-page-node-id="rcevWoIk5arjYqIehTZnqU">*</span></label><input id="p-name" type="text" placeholder="如：滨海中心项目" required="" data-page-node-id="53vwjpGPxGF52PsBgFDOdF"></div>
+          <div class="field" data-page-node-id="6RulG23YVHaUu8Xl3vJt9A"><label for="p-location" data-page-node-id="gHUdBs1lEaRoqECmunqBUA">地点</label><input id="p-location" type="text" placeholder="如：深圳南山" data-page-node-id="ZH5ZanHf9XF6xAXXzkifVj"></div>
+        </div>
+        <div class="form-actions" data-page-node-id="g7yFnYOBMBpnbrW1f8BLXx">
+          <button type="reset" class="btn btn-ghost" data-page-node-id="RXGqzhICJ1ptd3t8hduJNx">清空</button>
+          <button type="submit" class="btn btn-primary" data-page-node-id="c2Um7CmbMUf5Ks6XD5Rsqe">创建项目</button>
+        </div>
+      </form>
+      <ul id="projectList" class="project-list" data-page-node-id="cl3l1lENJKIrXM9xUQSDTA"></ul>
+    </div>
+  </div>
+
+  <!-- 编辑记录弹窗 -->
+  <div id="editModal" class="modal" hidden="" data-page-node-id="eqgp2KywuijU1FuKEojF96">
+    <div class="modal-backdrop" data-close="editModal" data-page-node-id="j8acII0sZuvURlhRySIxa9"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="编辑记录" data-page-node-id="EUo5aPsG5yVxwXMvHslg6m">
+      <div class="modal-head" data-page-node-id="ND3mfusb6jMwge9CDSM6BV">
+        <h3 data-page-node-id="qnRGbTJoYjcEaXRzt2wp66">编辑故障记录</h3>
+        <button class="icon-btn" data-close="editModal" type="button" aria-label="关闭" data-page-node-id="eKX8vEkW9UtOCsDPQDYymU">✕</button>
+      </div>
+      <form id="editForm" class="form" data-page-node-id="VioDGLqqO0a6D5w3ZdUA4u">
+        <input type="hidden" id="e-id" data-page-node-id="MUrlyxNfCmbE7JsstpoBzy">
+        <div class="field" data-page-node-id="EposN7VvCiPPyjdyJlfkds"><label for="e-device" data-page-node-id="szSUuKowUHwB1NwnoCChAE">设备名称 <span class="req" data-page-node-id="22lp13y8ngjjUXFVpYaUR1">*</span></label><input id="e-device" type="text" required="" data-page-node-id="7J0G4vLdrrLh2vq82QJ0Px"></div>
+        <div class="field" data-page-node-id="aRBnmEcAExscDA8DKilGfN"><label for="e-code" data-page-node-id="9SzlA4urDuQ1UDD285YB4d">设备编号 / 位置</label><input id="e-code" type="text" data-page-node-id="biQtdWu6a9sMCxwhpwCuLd"></div>
+        <div class="field-row" data-page-node-id="VLq3Due6kWS5lNVI3S82M6">
+          <div class="field" data-page-node-id="jzHOpMKSAeEXcXnGdUKTor"><label for="e-type" data-page-node-id="y2v1kQbVA6MoPbQDwuPybR">故障类型 <span class="req" data-page-node-id="ZVrWerULtTkG8q5OHDh1UF">*</span></label><select id="e-type" required="" data-page-node-id="rXJbdTfx7qkwAIVa0yo0Tf"><option value="">请选择</option><option>机械故障</option><option>电气故障</option><option>液压/气动故障</option><option>控制系统故障</option><option>结构/磨损</option><option>安全装置</option><option>仪表/传感器</option><option>其他</option></select></div>
+          <div class="field" data-page-node-id="L3hvmuXXqP8JOJLIYD47HQ"><label for="e-severity" data-page-node-id="4wRCNqApUHWyCQKjb8VmwV">严重程度</label><select id="e-severity" data-page-node-id="Xx2gAdA0tlrgdT5JNGhsul"><option data-page-node-id="h3hTidvdcZA3wkGlGrX8KM">紧急</option><option data-page-node-id="qkOCjOFpvA6SbybxkrzcPK">重要</option><option data-page-node-id="uzn7BkE4h8RxYHBrgC9eHu">一般</option></select></div>
+        </div>
+        <div class="field-row" data-page-node-id="PPmIt7LnEuHmD54NIVhu8m">
+          <div class="field" data-page-node-id="lPd4UdBTdxUtN2sH1OU0x0"><label for="e-status" data-page-node-id="eWt8tPHPCPqB5aQOT9acdq">处理状态</label><select id="e-status" data-page-node-id="gRVABVbjoYwbbrk61CUGno"><option data-page-node-id="i4z8kWVngQbJpgeQTGhhl6">待处理</option><option data-page-node-id="bmjBEL4Ts7B6pMsvU8HTeS">处理中</option><option data-page-node-id="52F1Nk22N3qg4tJYLmhPSL">已解决</option></select></div>
+          <div class="field" data-page-node-id="ppcpJvA4efE28fx4jaegQ3"><label for="e-date" data-page-node-id="xP9jhEymykPcROQTA2Husr">发现日期</label><input id="e-date" type="date" data-page-node-id="EBzjbJ9WeEQCy0iB1nR4Ft"></div>
+        </div>
+        <div class="field" data-page-node-id="obBQvrmR8j46VpqTkkxUWL"><label for="e-desc" data-page-node-id="xyR86qF0T9kBEz49grcRq8">故障描述 <span class="req" data-page-node-id="SN4uX0Db9u3gPFVbz5hFlf">*</span></label><textarea id="e-desc" rows="3" required=""></textarea></div>
+        <div class="field" data-page-node-id="BTunUDkQEkQUgkG7CLY8bX"><label for="e-reporter" data-page-node-id="TuI4OZivtU8qPfTQW41iET">上报人</label><input id="e-reporter" type="text" data-page-node-id="izn6nsUHZ5sovGnyXgGDz2"></div>
+        <div class="form-actions" data-page-node-id="xKgauz1T4knNexP4tBgQ3O">
+          <button type="button" class="btn btn-danger" id="btnDeleteRecord" data-page-node-id="IeqCWYYUJR3YKEe6MB1qEs">删除</button>
+          <button type="submit" class="btn btn-primary" data-page-node-id="jS5rFfU13roAHbdI5V48w4">保存修改</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 数据备份弹窗 -->
+  <div id="dataModal" class="modal" hidden="" data-page-node-id="NjoBTfFFLfdwD0CiXUfQv0">
+    <div class="modal-backdrop" data-close="dataModal" data-page-node-id="gmEcs5BCeXtU1b7dSXO6c2"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="数据备份" data-page-node-id="D0m9B5g8ZFke0TuvGiQAkD">
+      <div class="modal-head" data-page-node-id="QDkRffDfU9G1IIiQm6tg8e">
+        <h3 data-page-node-id="A1qj0vB88pUm1aMLckfhKs">数据备份</h3>
+        <button class="icon-btn" data-close="dataModal" type="button" aria-label="关闭" data-page-node-id="YIpTlC58N07aZbJWAQFgBu">✕</button>
+      </div>
+      <div class="data-actions" data-page-node-id="vhum12RSCnCzR3eH7TIzOn">
+        <p class="muted" data-page-node-id="yYxIL63vWrMGFbdPLifDdb">数据已存储在云端，可导出为本地备份文件。</p>
+        <div class="btn-row" data-page-node-id="8PQryXBgr29y2s3lLXaNix">
+          <button id="btnExportJson" class="btn btn-ghost" type="button" data-page-node-id="QLKtJj5HbXPwNPOWv0vc4U">导出 JSON</button>
+          <button id="btnExportCsv" class="btn btn-ghost" type="button" data-page-node-id="6BcIxGCzKjzuQGCmlZTuMM">导出 CSV</button>
+        </div>
+        <label class="switch-row" data-page-node-id="fCtWJino70XtS7CSrvIHmo"><input id="toggleSample" type="checkbox" data-page-node-id="Qs4xPJCCEWnTsgQgG46Coi"><span data-page-node-id="jWq3segOL3AfIS5BCGDlrb">载入示例数据（体验功能）</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden="" data-page-node-id="kPCBzEpAH8j2DUmakjQMq8"></div>
+
+  <!-- 云 SDK：本地优先（预览/内网/离线可用），缺失时回退 CDN -->
+  <script src="vendor/workbuddy-cloud-sdk.js"></script>
+  <script>window.WorkBuddyCloud||document.write('<script src="https://cdn.jsdelivr.net/npm/@tencent-ai/workbuddy-cloud-sdk@dev/lib/index.global.js"><\/script>');</script>
+  <script src="config.js"></script>
+  <script src="vendor/chart.umd.min.js"></script>
+  <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>');</script>
+  <script src="app.js"></script>
+
+
+</body></html>
