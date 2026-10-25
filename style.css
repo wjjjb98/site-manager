@@ -58,6 +58,17 @@ body {
 }
 .icon-btn:hover { background: rgba(255, 255, 255, .28); }
 
+/* 云端状态徽章 */
+.cloud-badge {
+  font-size: 12px; line-height: 1; padding: 6px 10px; border-radius: 999px;
+  white-space: nowrap; cursor: default; user-select: none;
+  border: 1px solid rgba(255, 255, 255, .35); color: #fff;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.cloud-badge.ok { background: rgba(16, 185, 129, .25); border-color: rgba(16, 185, 129, .6); }
+.cloud-badge.off { background: rgba(255, 255, 255, .14); }
+.cloud-badge.sync { background: rgba(251, 191, 36, .25); border-color: rgba(251, 191, 36, .6); }
+
 /* 项目条 */
 .project-bar {
   background: var(--surface); border-bottom: 1px solid var(--line);
